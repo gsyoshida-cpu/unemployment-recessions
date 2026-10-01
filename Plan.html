@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Plan</title>
+<style>
+:root{--bg:#fff;--fg:#1b1b1b;--muted:#52514e}
+@media (prefers-color-scheme: dark){:root{--bg:#1a1a19;--fg:#f2f2f0;--muted:#c3c2b7}}
+body{font-family:-apple-system,system-ui,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem;line-height:1.6;color:var(--fg);background:var(--bg)}
+h1{font-size:1.6rem} h2{font-size:1.2rem;margin-top:2rem;border-bottom:1px solid var(--muted);padding-bottom:.2rem}
+</style>
+</head><body>
+<h1>Plan: Does unemployment increase during recessions?</h1>
+<h2>1. Question</h2>
+<p>Does unemployment increase during recessions?</p>
+<p>Expectation: Yes, I think that unemployment will increase during recessions because during economic downturns, there is reduced hiring and increased layoffs.</p>
+<h2>2. Data Sources</h2>
+<p>My data will come from the FRED API.</p>
+<p>Unemployment Rate<br />
+Series ID: UNRATE<br />
+Source: Bureau of Labor Statistics through FRED<br />
+Recession Indicator<br />
+Series ID: USREC<br />
+Source: National Bureau of Economic Research through FRED<br />
+Python tools:</p>
+<p>fredapi (to pull data from the FRED API)<br />
+python-dotenv (to load my API key)<br />
+pandas<br />
+matplotlib<br />
+statsmodels<br />
+API key: My FRED API key will be stored in a .env file and loaded in the notebook with python-dotenv. The .env file will be listed in .gitignore so the key is never in the repo.</p>
+<h2>3. Cleaning Steps</h2>
+<p>Pull monthly data from FRED.<br />
+Restrict data to 2000-present.<br />
+Merge unemployment and recession datasets.<br />
+Handle missing values by dropping months where either series is missing.<br />
+Create variables showing whether the economy was in recession.<br />
+Create a variable for the monthly change in the unemployment rate.<br />
+Calculate average unemployment during recessions and expansions.</p>
+<h2>4. Charts</h2>
+<p>Line chart of unemployment rate over time, with recession periods shaded.<br />
+Bar chart comparing average unemployment during recessions vs non-recessions.<br />
+All charts will have a title, axis labels with units, and the data source.</p>
+<h2>5. Statistical Test</h2>
+<p>Run two simple regressions:</p>
+<p>Unemployment Rate = β0 + β1(Recession Indicator)<br />
+Change in Unemployment Rate = β0 + β1(Recession Indicator)<br />
+The second regression tests whether unemployment actually rises faster during recessions.</p>
+<h2>6. What would support or contradict my expectation</h2>
+<p>Supporting evidence:</p>
+<p>A positive β1 would show unemployment is higher, and rises faster, during recessions.<br />
+Contradicting evidence:</p>
+<p>A zero or negative β1 would suggest recessions are not associated with higher unemployment.</p>
+<h2>7. Limitations</h2>
+<p>-This only shows correlation, not direct causation.<br />
+-Monthly data may miss some economic changes due to shutdowns, etc.<br />
+-Other factors also influence unemployment, not just the economic state of the U.S.</p>
+</body></html>
